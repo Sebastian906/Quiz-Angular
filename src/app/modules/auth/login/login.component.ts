@@ -38,6 +38,11 @@ export class LoginComponent {
         role: res.role
       }
       UserStorageService.saveUser(user);
+      if(UserStorageService.isAdminLoggedIn()) {
+        this.router.navigateByUrl('admin/dashboard');
+      } else if(UserStorageService.isUserLoggedIn()) {
+        this.router.navigateByUrl('user/dashboard');
+      }
       console.log(res);
     }, error => {
       this.message.error('Bad credentials', { nzDuration: 5000 });

@@ -39,7 +39,7 @@ export class UserStorageService {
     return role == 'ADMIN';
   }
 
-  static isAdminUserIn(): boolean {
+  static isUserLoggedIn(): boolean {
     const role: string = this.getUserRole();
     return role == 'USER';
   }

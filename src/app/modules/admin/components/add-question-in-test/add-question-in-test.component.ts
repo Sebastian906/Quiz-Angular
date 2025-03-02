@@ -36,4 +36,15 @@ export class AddQuestionInTestComponent {
     this.id = this.activatedRoute.snapshot.params["id"];
   }
 
+  submitForm() {
+    const questionDto = this.questionForm.value;
+    questionDto.id = this.id;
+    this.adminService.addQuestionInTest(questionDto).subscribe(res => {
+      this.notification.success('SUCCESS', 'Question created successfully.', { nzDuration: 5000 });
+      this.router.navigateByUrl("/admin/dashboard");
+    }, error => {
+      this.notification.error('ERROR',`${error.error}`, { nzDuration: 5000 });
+    })
+  }
+
 }

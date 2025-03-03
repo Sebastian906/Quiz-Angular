@@ -23,4 +23,8 @@ export class AdminService {
     return this.http.post(BASIC_URL + "api/test/question", questionDto);
   }
 
+  getTestQuestions(id: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/test/${id}`);
+  }
+
 }
